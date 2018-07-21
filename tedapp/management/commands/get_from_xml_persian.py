@@ -29,10 +29,6 @@ def get_xml():
                    farsi = FarsiTed(link=link)
                    farsi.save()
 
-
-
-
-
     except Exception as error:
 
         print(error)

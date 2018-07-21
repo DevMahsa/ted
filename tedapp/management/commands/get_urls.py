@@ -7,7 +7,7 @@ def get_urls():
     import requests
     from bs4 import BeautifulSoup
 
-    maxpagenum = 78
+    maxpagenum = 81
     try:
 
         for i in range(1, maxpagenum, 1):
@@ -35,16 +35,19 @@ def get_urls():
                                        0] or None
                             fasub = str(dllist[e].findAll('a')).split('Medium')[1].split('<a href="')[1].split('">')[
                                 0].split('.mp4')[0].__add__('-fa.mp4?apikey=TEDDOWNLOAD')
+
                             engsub = str(dllist[e].findAll('a')).split('Medium')[1].split('<a href="')[1].split('">')[
                                 0].split('.mp4')[0].__add__('-en.mp4?apikey=TEDDOWNLOAD')
                             if not Url.objects.filter(title=title).exists():
                                 url = Url(title=title, event=event, low=low, medium=medium, high=high, fasub=fasub,
                                           engsub=engsub)
                                 url.save()
+
                             else:
                                 continue
                         else:
                             continue
+
                 except IndexError:
                     pass
 
